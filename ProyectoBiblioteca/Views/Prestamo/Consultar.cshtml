@@ -122,8 +122,147 @@
 </div>
 
 
-@section scripts{
-    <script>
+
+
+
+
+
+
+
+
+
+<div class="card shadow mb-4">
+
+    <div class="card-body">
+        <div class="form-row align-items-end">
+            <div class="col-9">
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Para mirar todas las bitacoras(Inicios,Cierres e intentos fallidos de Sesion) seleccione aqui</label>
+                    
+                </div>
+            </div>
+            
+            <div class="col-2">
+                <div class="form-group">
+                    <button id="botonMostrar" class="btn btn-primary btn-block">Mirar Aqui</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+@using System.Data.SqlClient;
+
+<div class="dropdown">
+
+
+</div>
+
+
+
+
+
+<div id="miElemento" style="display: none;" class="border border-primary">
+
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tabla" style="width:100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th style="width:200px">Fecha Exacta</th>
+                                <th style="width:200px">Correo Electronico</th>
+                                <th style="width:200px">Nivel</th>
+                                <th style="width:200px">Mensaje</th>
+
+                            </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        @{
+
+            // Configurar la cadena de conexión
+            string connectionString = "Data Source=.;Initial Catalog=DB_BIBLIOTECA;Integrated Security=True";
+
+            // Crear la conexión
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            // Crear el comando SQL
+            SqlCommand command = new SqlCommand("SELECT * FROM logss", connection);
+
+            // Ejecutar la consulta SQL y leer los datos
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                DateTime id = reader.GetDateTime(0);
+                string user = reader.GetString(1);
+                string level = reader.GetString(2);
+                string msj = reader.GetString(3);
+
+           
+
+
+
+               
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="tabla" style="width:100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:200px">@id</th>
+                                            <th style="width:200px">@user</th>
+                                            <th style="width:200px">@level</th>
+                                            <th style="width:200px">@msj</th>
+
+                                        </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+               
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+                    // Cerrar la conexión
+                    connection.Close();
+                    }
+                </div>
+
+
+
+                @section scripts{
+                    <script>
         var tabladata;
 
         $(document).ready(function () {
@@ -282,6 +421,12 @@
 
 
 
-    </script>
-}
+                    </script>
+
+                    <script>
+                        document.getElementById("botonMostrar").addEventListener("click", function () {
+                            document.getElementById("miElemento").style.display = "block";
+                        });
+                    </script>
+                }
 

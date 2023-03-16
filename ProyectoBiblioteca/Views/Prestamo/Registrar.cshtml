@@ -74,7 +74,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Fecha Devolucion:</span>
                                     </div>
-                                    <input type="text" class="form-control" id="txtfechadevolucion">
+                                    <input readonly type="text" class="form-control" id="txtfechadevolucion">
                                 </div>
                             </div>
                         </div>
@@ -281,16 +281,25 @@
                firstDay: 1,
                isRTL: false,
                showMonthAfterYear: false,
-               yearSuffix: ''
+               yearSuffix: '',
+               maxDate: "+2d"
            };
            $.datepicker.setDefaults($.datepicker.regional['es']);
 
 
            $("#txtfechadevolucion").datepicker({
                minDate: new Date()
+              
            });
        })
-       
+
+
+       $(function () {
+           $("#txtfechadevolucion").datepicker({
+               maxDate: "+3d" // fecha máxima es un año desde hoy
+           });
+       });
+
        
        $("#btnregistrar").on("click", function () {
            $("#txtestadolibro").val("");

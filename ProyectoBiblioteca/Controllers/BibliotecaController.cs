@@ -29,6 +29,11 @@ namespace ProyectoBiblioteca.Controllers
             return View();
         }
 
+        public ActionResult log()
+        {
+            return View();
+        }
+
         public ActionResult Categoria()
         {
             return View();
@@ -56,6 +61,8 @@ namespace ProyectoBiblioteca.Controllers
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+  
 
 
         [HttpGet]

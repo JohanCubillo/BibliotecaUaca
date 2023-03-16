@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProyectoBiblioteca.Models
 {
-    public class Prestamo
+    public class Prestamos
     {
         public int IdPrestamo { get; set; }
         public EstadoPrestamo oEstadoPrestamo { get; set; }
