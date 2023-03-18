@@ -29,11 +29,6 @@ namespace ProyectoBiblioteca.Controllers
             return View();
         }
 
-        public ActionResult log()
-        {
-            return View();
-        }
-
         public ActionResult Categoria()
         {
             return View();
@@ -61,8 +56,6 @@ namespace ProyectoBiblioteca.Controllers
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
-  
 
 
         [HttpGet]
@@ -119,7 +112,7 @@ namespace ProyectoBiblioteca.Controllers
             List<Libro> oLista = new List<Libro>();
 
             oLista = LibroLogica.Instancia.Listar();
-           
+
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
@@ -157,7 +150,7 @@ namespace ProyectoBiblioteca.Controllers
                 if (imagenArchivo != null && oLibro.IdLibro != 0)
                 {
                     string extension = Path.GetExtension(imagenArchivo.FileName);
-                    GuardarEnRuta = Path.Combine(GuardarEnRuta,oLibro.IdLibro.ToString() + extension);
+                    GuardarEnRuta = Path.Combine(GuardarEnRuta, oLibro.IdLibro.ToString() + extension);
                     oLibro.NombrePortada = oLibro.IdLibro.ToString() + extension;
 
                     imagenArchivo.SaveAs(GuardarEnRuta);
