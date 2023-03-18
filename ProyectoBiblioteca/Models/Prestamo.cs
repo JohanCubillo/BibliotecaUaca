@@ -17,6 +17,7 @@ namespace ProyectoBiblioteca.Models
         public string TextoFechaConfirmacionDevolucion { get; set; }
         public string EstadoEntregado { get; set; }
         public string EstadoRecibido { get; set; }
+        public string lugar { get; set; }
         public bool Estado { get; set; }
     }
 }
